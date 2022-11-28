@@ -13,7 +13,7 @@ Spis Treści
 
 Opis projektu
 ==============
-Założeniem projektu jest automatyczne sterowanie oświetleniem w pokoju na podstawie odczytów z czujnika ruchu oraz czujnika natężenia światła. W momencie wykrycia ruchu odczytywane jest natężenie światła. W przypadku niskiej jasności włączane jest oświetlenie pokoju na 1 minutę. W przypadku wysokiej jasności oraz wyłączonego światła w pokoju światło nie zostaje włączone. Mikrokontroler dokonuje pomiarów co 10 sekund aby wykryć konieczność pozostawienia włączonego światła.
+Założeniem projektu jest inteligentne sterowanie oświetleniem w pokoju na podstawie odczytów z czujnika temperatury oraz czujnika natężenia światła. W momencie naciśnięcia przycisku włączania oświetlenia odczytywane jest natężenie światła oraz temperatura. W przypadku niskiej jasności włączane jest oświetlenie pokoju. W zależności od odczytanej temperatury uruchomiona jest wybrana żarówka. W przypadku niskiej temperatury włączana jest żarówka o ciepłej barwie światła. W przypadku wysokiej temperatury włączana jest żarówka o zimnej barwie światła. W przypadku wysokiej jasności i wyłączonego światła światło nie zostaje włączone. W przypadku włączonego światła i wciśnięcia przycisku światło zostaje wyłączone. Mikrokontroler dokonuje pomiarów co 10 sekund aby wykryć konieczność zmiany barwy światła, tylko przy włączonym świetle.
 
 Wymagania
 =========
@@ -21,14 +21,15 @@ Wymagania
 Wymagania funkcjonalne
 ----------------------
 
-1. Mikrokontroler dokonuje pomiarów co 10 sekund.
-2. Po wykryciu ruchu oświetlenie jest włączane na 1 minutę.
+1. Mikrokontroler dokonuje pomiarów co 10 sekund, przy włączonym świetle.
+2. Po wykryciu zmiany temperatury jest włączana odpowiednia żarówka.
 3. Odczyt z fotorezystora wartości poniżej 400 uznajemy jako ciemno, a wartości powyżej 400 uznajemy jako jasno.
 
 Wymagania niefunkcjonalne
 --------------------------
 
-1. Światło zostaje włączone kiedy w pomieszczeniu jest ciemno i zostanie wykryty ruch.
-2. Światło zostaje wyłączone kiedy w ciągu ostatniej minuty nie wykryto ruchu.
-3. Światło pozostaje włączone kiedy w pomieszczeniu wykrywany jest ruch.
-4. Światło pozostaje wyłączone kiedy w pomieszczeniu jest jasno, bez interpretowania odczytów czujnika ruchu.
+1. Światło zostaje włączone kiedy wciśnięty zostanie przycisk a światło jest wyłączone i jest ciemno.
+2. Światło zostaje wyłączone kiedy wciśnięty zostanie przycisk a światło jest włączone.
+3. Światło pozostaje wyłączone kiedy w pomieszczeniu jest jasno, a zostanie wciśnięty przycisk.
+4. Żarówka o ciepłej barwie światła jest włączona, kiedy jest zimno.
+5. Żarówka o zimnej barwie światła jest włączona, kiedy jest ciepło.
